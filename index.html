@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rex Design Studio | Interior Design</title>
+
+  <style>
+    :root{
+      --bg:#0b0f14;
+      --card:#111826;
+      --text:#e9eef7;
+      --muted:#aab6c7;
+      --accent:#7c5cff;
+      --accent2:#00d4ff;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;}
+    body{background:linear-gradient(180deg,#070a0f,#0b0f14);color:var(--text);}
+
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1150px,92%);margin:auto;}
+
+    /* NAV */
+    nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(11,15,20,0.75);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-wrap{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 0;
+    }
+    .logo{
+      font-weight:800;letter-spacing:0.5px;font-size:18px;
+      display:flex;gap:10px;align-items:center;
+    }
+    .dot{
+      width:12px;height:12px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 0 18px rgba(124,92,255,0.55);
+    }
+    .nav-links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+    .nav-links a{color:var(--muted);font-weight:600;font-size:14px;}
+    .nav-links a:hover{color:var(--text);}
+
+    .btn{
+      padding:11px 16px;border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#061019;font-weight:800;border:none;cursor:pointer;
+      box-shadow:0 12px 30px rgba(124,92,255,0.25);
+    }
+    .btn:hover{transform:translateY(-1px);}
+    .btn:active{transform:translateY(0px);}
+
+    /* HERO */
+    header{padding:56px 0 30px;}
+    .hero{
+      display:grid;grid-template-columns: 1.2fr 0.8fr;
+      gap:24px;align-items:stretch;
+    }
+    .hero-card{
+      background:rgba(17,24,38,0.75);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 30px 80px rgba(0,0,0,0.45);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;inset:-80px;
+      background:radial-gradient(circle at 20% 20%, rgba(124,92,255,0.25), transparent 50%),
+                 radial-gradient(circle at 80% 30%, rgba(0,212,255,0.18), transparent 55%);
+      filter: blur(10px);
+      z-index:0;
+    }
+    .hero-card > *{position:relative;z-index:1;}
+    .tag{
+      display:inline-flex;gap:10px;align-items:center;
+      padding:8px 12px;border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);font-weight:700;font-size:13px;
+      width:fit-content;
+      background:rgba(255,255,255,0.03);
+    }
+    .hero h1{
+      margin-top:14px;
+      font-size:42px;line-height:1.05;
+      letter-spacing:-0.8px;
+    }
+    .hero p{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:16px;line-height:1.6;
+      max-width:62ch;
+    }
+    .hero-actions{
+      margin-top:18px;
+      display:flex;gap:12px;flex-wrap:wrap;
+    }
+    .btn-ghost{
+      padding:11px 16px;border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);font-weight:800;
+      cursor:pointer;
+    }
+    .btn-ghost:hover{border-color:rgba(255,255,255,0.18);}
+    .mini{
+      margin-top:18px;
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .mini .box{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      border-radius:18px;
+      padding:12px;
+    }
+    .mini .box b{display:block;font-size:14px;}
+    .mini .box span{color:var(--muted);font-size:13px;}
+
+    /* SIDE CARD */
+    .side-card{
+      background:rgba(17,24,38,0.65);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      display:flex;flex-direction:column;justify-content:space-between;
+      gap:14px;
+    }
+    .side-card h3{font-size:18px;}
+    .info{
+      display:grid;gap:10px;
+      margin-top:6px;
+    }
+    .row{
+      display:flex;justify-content:space-between;gap:10px;
+      padding:10px 12px;border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+    }
+    .row span{color:var(--muted);font-weight:700;font-size:13px;}
+    .row b{font-size:13px;text-align:right;}
+
+    /* SECTIONS */
+    section{padding:34px 0;}
+    .section-title{
+      display:flex;align-items:flex-end;justify-content:space-between;
+      gap:18px;margin-bottom:16px;
+    }
+    .section-title h2{font-size:24px;}
+    .section-title p{color:var(--muted);max-width:60ch;}
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+    }
+
+    /* NEW: grid-2 (Fix) */
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .card{
+      background:rgba(17,24,38,0.65);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:18px;
+    }
+    .card h4{font-size:16px;margin-bottom:6px;}
+    .card p{color:var(--muted);font-size:14px;line-height:1.6;}
+
+    /* FORM */
+    form{
+      margin-top:14px;
+      display:grid;
+      gap:12px;
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+    label{font-size:13px;color:var(--muted);font-weight:700;}
+    input, select, textarea{
+      width:100%;
+      margin-top:6px;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.03);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px;resize:vertical;}
+    input:focus, select:focus, textarea:focus{
+      border-color:rgba(124,92,255,0.6);
+      box-shadow:0 0 0 4px rgba(124,92,255,0.12);
+    }
+    .full{grid-column:1/-1;}
+
+    .note{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+      border:1px dashed rgba(255,255,255,0.15);
+      padding:12px 14px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.02);
+    }
+
+    /* FOOTER */
+    footer{
+      padding:24px 0 40px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 950px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:1fr;}
+      .grid-2{grid-template-columns:1fr;}
+      .form-grid{grid-template-columns:1fr;}
+      .mini{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-wrap">
+      <div class="logo">
+        <div class="dot"></div>
+        Rex Design Studio
+      </div>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#quote">Get Quote</a>
+        <a href="#contact">Contact</a>
+
+        <!-- FIXED -->
+        <button class="btn" onclick="scrollToSection('contact')">Book Consultation</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <div class="container hero">
+      <div class="hero-card">
+        <div class="tag">✨ Premium Interior Design • Bengaluru</div>
+        <h1>Design your home with<br>style, comfort & precision.</h1>
+        <p>
+          Rex Design Studio creates modern, elegant, and functional interior spaces.
+          We specialize in residential interiors, modular solutions, lighting, and full turnkey execution.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn" onclick="scrollToSection('quote')">Get Free Quote</button>
+          <button class="btn-ghost" onclick="scrollToSection('services')">View Services</button>
+        </div>
+
+        <div class="mini">
+          <div class="box">
+            <b>Location</b>
+            <span>Bellahalli, Bengaluru</span>
+          </div>
+          <div class="box">
+            <b>Founder</b>
+            <span>Rex S</span>
+          </div>
+          <div class="box">
+            <b>Call Now</b>
+            <span>+91 78260 65905</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div>
+          <h3>Studio Info</h3>
+          <div class="info">
+            <div class="row"><span>Company</span><b>Rex Design Studio</b></div>
+            <div class="row"><span>Founder</span><b>Rex S</b></div>
+            <div class="row"><span>Phone</span><b>7826065905</b></div>
+            <div class="row"><span>Location</span><b>Bellahalli, Bengaluru, India</b></div>
+            <div class="row"><span>Email</span><b>rexexpertdesign@gmail.com</b></div>
+          </div>
+        </div>
+
+        <button class="btn" onclick="callNow()">📞 Call Now</button>
+
+        <div class="note">
+          Tip: Fill the form below and send your full requirements directly to WhatsApp or Email.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Services</h2>
+        <p>Complete interior solutions from concept to execution.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>Residential Interiors</h4>
+          <p>2BHK, 3BHK, villa, apartment interiors with premium design and space planning.</p>
+        </div>
+        <div class="card">
+          <h4>Modular Kitchen & Wardrobes</h4>
+          <p>Modern modular solutions with best material options, finishes and accessories.</p>
+        </div>
+        <div class="card">
+          <h4>False Ceiling & Lighting</h4>
+          <p>Ceiling design, cove lighting, spotlights, ambience lighting and electrical planning.</p>
+        </div>
+        <div class="card">
+          <h4>3D Design & Visualization</h4>
+          <p>High quality 3D renders and walkthrough planning before execution.</p>
+        </div>
+        <div class="card">
+          <h4>Turnkey Execution</h4>
+          <p>Full end-to-end project handling with vendors, material, supervision & handover.</p>
+        </div>
+        <div class="card">
+          <h4>Space Optimization</h4>
+          <p>Smart storage, layout correction, Vastu-based planning (optional) and ergonomic design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="section-title">
+        <h2>How We Work</h2>
+        <p>A clear process so your project stays on budget and on time.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h4>1) Requirement Call</h4>
+          <p>We understand your needs, style, budget, and timeline.</p>
+        </div>
+        <div class="card">
+          <h4>2) Site Visit & Measurements</h4>
+          <p>We check your site and take accurate measurements for planning.</p>
+        </div>
+        <div class="card">
+          <h4>3) Design + Quotation</h4>
+          <p>We provide layout, 3D design, and a detailed quotation.</p>
+        </div>
+        <div class="card">
+          <h4>4) Material Finalization</h4>
+          <p>We finalize materials, colors, finishes, and accessories.</p>
+        </div>
+        <div class="card">
+          <h4>5) Execution</h4>
+          <p>Work begins with supervision, quality checks, and progress updates.</p>
+        </div>
+        <div class="card">
+          <h4>6) Handover</h4>
+          <p>Final cleaning, inspection, and handover of your completed interiors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE FORM -->
+  <section id="quote">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get a Quote (Project Requirements)</h2>
+        <p>This form collects all details required for an Interior Design quotation.</p>
+      </div>
+
+      <div class="card">
+        <form id="quoteForm">
+
+          <div class="form-grid">
+            <div>
+              <label>Client Name
+                <input required type="text" name="clientName" placeholder="Eg: Arun Kumar" />
+              </label>
+            </div>
+
+            <div>
+              <label>Phone Number
+                <input required type="tel" name="clientPhone" placeholder="Eg: 98XXXXXXXX" />
+              </label>
+            </div>
+
+            <div>
+              <label>Email (Optional)
+                <input type="email" name="clientEmail" placeholder="Eg: arun@gmail.com" />
+              </label>
+            </div>
+
+            <div>
+              <label>Project Location
+                <input required type="text" name="projectLocation" placeholder="Eg: Yelahanka, Bengaluru" />
+              </label>
+            </div>
+
+            <div>
+              <label>Property Type
+                <select required name="propertyType" style="background:#111; color:#fff; border:1px solid #444; padding:10px; border-radius:8px; width:100%;">
+                  <option value="" style="background:#111; color:#999;">Select</option>
+                  <option style="background:#111; color:#fff;">Apartment</option>
+                  <option style="background:#111; color:#fff;">Independent House</option>
+                  <option style="background:#111; color:#fff;">Villa</option>
+                  <option style="background:#111; color:#fff;">Commercial</option>
+                </select>
+              </label>
+            </div>
+
+            <div>
+              <label>BHK / Size
+                <select required name="bhk" style="background:#111; color:#fff; border:1px solid #444; padding:10px; border-radius:8px; width:100%;">
+                  <option value="" style="background:#111; color:#999;">Select</option>
+                  <option style="background:#111; color:#fff;">1BHK</option>
+                  <option style="background:#111; color:#fff;">2BHK</option>
+                  <option style="background:#111; color:#fff;">3BHK</option>
+                  <option style="background:#111; color:#fff;">4BHK</option>
+                  <option style="background:#111; color:#fff;">Villa</option>
+                  <option style="background:#111; color:#fff;">Office / Shop</option>
+                </select>
+              </label>
+            </div>
+
+            <div>
+              <label>Project Stage
+                <select required name="stage" style="background:#111; color:#fff; border:1px solid #444; padding:10px; border-radius:8px; width:100%;">
+                  <option value="" style="background:#111; color:#999;">Select</option>
+                  <option style="background:#111; color:#fff;">New Construction</option>
+                  <option style="background:#111; color:#fff;">Ready to Move</option>
+                  <option style="background:#111; color:#fff;">Renovation</option>
+                </select>
+              </label>
+            </div>
+
+            <div>
+              <label>Preferred Style
+                <select required name="style" style="background:#111; color:#fff; border:1px solid #444; padding:10px; border-radius:8px; width:100%;">
+                  <option value="" style="background:#111; color:#999;">Select</option>
+                  <option style="background:#111; color:#fff;">Modern</option>
+                  <option style="background:#111; color:#fff;">Minimal</option>
+                  <option style="background:#111; color:#fff;">Luxury</option>
+                  <option style="background:#111; color:#fff;">Contemporary</option>
+                  <option style="background:#111; color:#fff;">Classic</option>
+                  <option style="background:#111; color:#fff;">Industrial</option>
+                </select>
+              </label>
+            </div>
+
+            <div>
+              <label>Budget Range
+                <select required name="budget" style="background:#111; color:#fff; border:1px solid #444; padding:10px; border-radius:8px; width:100%;">
+                  <option value="" style="background:#111; color:#999;">Select</option>
+                  <option style="background:#111; color:#fff;">Below ₹3 Lakhs</option>
+                  <option style="background:#111; color:#fff;">₹3 - ₹6 Lakhs</option>
+                  <option style="background:#111; color:#fff;">₹6 - ₹10 Lakhs</option>
+                  <option style="background:#111; color:#fff;">₹10 - ₹15 Lakhs</option>
+                  <option style="background:#111; color:#fff;">₹15 Lakhs+</option>
+                </select>
+              </label>
+            </div>
+
+            <div>
+              <label>Timeline (When to Start?)
+                <select required name="timeline" style="background:#111; color:#fff; border:1px solid #444; padding:10px; border-radius:8px; width:100%;">
+                  <option value="" style="background:#111; color:#999;">Select</option>
+                  <option style="background:#111; color:#fff;">Within 15 Days</option>
+                  <option style="background:#111; color:#fff;">Within 1 Month</option>
+                  <option style="background:#111; color:#fff;">Within 3 Months</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- FIXED name (sampleImage) -->
+            <div>
+              <label>Sample Image
+                <select required name="sampleImage" style="background:#111; color:#fff; border:1px solid #444; padding:10px; border-radius:8px; width:100%;">
+                  <option value="" style="background:#111; color:#999;">Select</option>
+                  <option style="background:#111; color:#fff;">Now Itself</option>
+                  <option style="background:#111; color:#fff;">Later</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="full">
+              <label>Required Rooms (Select Multiple)</label>
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:10px;">
+                <label><input type="checkbox" name="rooms" value="Living Room"> Living Room</label>
+                <label><input type="checkbox" name="rooms" value="Kitchen"> Kitchen</label>
+                <label><input type="checkbox" name="rooms" value="Master Bedroom"> Master Bedroom</label>
+                <label><input type="checkbox" name="rooms" value="Kids Bedroom"> Kids Bedroom</label>
+                <label><input type="checkbox" name="rooms" value="Guest Bedroom"> Guest Bedroom</label>
+                <label><input type="checkbox" name="rooms" value="Pooja Unit"> Pooja Unit</label>
+                <label><input type="checkbox" name="rooms" value="Dining Area"> Dining Area</label>
+                <label><input type="checkbox" name="rooms" value="TV Unit"> TV Unit</label>
+                <label><input type="checkbox" name="rooms" value="Study Room"> Study Room</label>
+              </div>
+            </div>
+
+            <div class="full">
+              <label>Any other Requirements
+                <textarea name="mustHave" placeholder="Eg: Walk-in wardrobe, crockery unit, pooja unit, etc."></textarea>
+              </label>
+            </div>
+
+            <div class="full">
+              <label>Any Reference / Pinterest Link (Optional)
+                <input type="text" name="reference" placeholder="Paste any design link here" />
+              </label>
+            </div>
+
+            <div class="full">
+              <label>Extra Notes
+                <textarea name="notes" placeholder="Any special needs, vastu, kids room, storage, premium finish, etc."></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="note">
+            ✅ After submit, you can send the full requirements directly to:
+            <br><b>WhatsApp:</b> 7826065905
+            <br><b>Email:</b> rexexpertdesign@gmail.com
+          </div>
+
+          <button class="btn" type="submit">Submit Requirements</button>
+        </form>
+      </div>
+
+      <div id="resultBox" class="card" style="display:none; margin-top:14px;"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <span style="color:var(--muted);font-weight:700;">Let’s Work Together</span>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-bottom:10px;">Quick Contact</h3>
+          <p style="color:var(--muted);line-height:1.8;">
+            📍 Bengaluru, India<br>
+            📞 <a style="color:var(--accent);font-weight:900;" href="tel:7826065905">+91 78260 65905</a><br>
+            🔗 <a style="color:var(--accent);font-weight:900;" target="_blank" href="https://www.linkedin.com/in/rex-s-3853b9306">LinkedIn Profile</a><br>
+            💬 <a style="color:var(--accent);font-weight:900;" target="_blank" href="https://wa.me/917826065905">WhatsApp Chat</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-bottom:10px;">Message (Copy & Send)</h3>
+          <p style="color:var(--muted);line-height:1.8;">
+            Hello Rex, I want interior design work for my home/commercial space. Please share details and quotation.
+          </p>
+          <div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn" onclick="copyMsg()">Copy Message</button>
+            <a class="btn" target="_blank" href="https://wa.me/917826065905">Send on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Rex Design Studio • Founder: Rex S • Bellahalli, Bengaluru, India
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function scrollToSection(id){
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:"smooth"});
+    }
+
+    function callNow(){
+      window.location.href = "tel:+917826065905";
+    }
+
+    function copyMsg(){
+      const text = "Hello Rex, I want interior design work for my home/commercial space. Please share details and quotation.";
+      navigator.clipboard.writeText(text).then(()=>{
+        alert("Message copied! Now paste it in WhatsApp.");
+      });
+    }
+
+    // WhatsApp + Email Config
+    const WHATSAPP_NUMBER = "917826065905";
+    const EMAIL_TO = "rexexpertdesign@gmail.com";
+
+    const form = document.getElementById("quoteForm");
+    const resultBox = document.getElementById("resultBox");
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const data = new FormData(form);
+
+      // ✅ FIX: support multiple checkbox values
+      const obj = {};
+      data.forEach((v, k) => {
+        if (obj[k]) {
+          if (Array.isArray(obj[k])) obj[k].push(v);
+          else obj[k] = [obj[k], v];
+        } else {
+          obj[k] = v;
+        }
+      });
+
+      const roomsText = Array.isArray(obj.rooms) ? obj.rooms.join(", ") : (obj.rooms || "-");
+
+      // Message text
+      const message =
+`📌 *Interior Design Quote Request* (Rex Design Studio)
+
+👤 Client Name: ${obj.clientName}
+📞 Client Phone: ${obj.clientPhone}
+📧 Email: ${obj.clientEmail || "-"}
+
+📍 Project Location: ${obj.projectLocation}
+🏠 Property Type: ${obj.propertyType}
+📐 BHK / Size: ${obj.bhk}
+🏗️ Project Stage: ${obj.stage}
+🎨 Preferred Style: ${obj.style}
+💰 Budget Range: ${obj.budget}
+⏳ Timeline: ${obj.timeline}
+🖼️ Sample Image: ${obj.sampleImage}
+
+🛋️ Required Rooms: ${roomsText}
+
+⭐ Other Requirements: ${obj.mustHave || "-"}
+🔗 Reference Link: ${obj.reference || "-"}
+📝 Notes: ${obj.notes || "-"}
+
+— Sent from Rex Design Studio Website`;
+
+      // WhatsApp URL
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+      // Email URL
+      const subject = "Interior Design Quote Request - Rex Design Studio";
+      const mailtoURL = `mailto:${EMAIL_TO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+      // Show send buttons
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <h3 style="margin-bottom:10px;">✅ Requirements Ready to Send</h3>
+
+        <p style="color:rgba(233,238,247,0.85);line-height:1.7;">
+          Click one option below:
+        </p>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px;">
+          <button class="btn" onclick="window.open('${whatsappURL}','_blank')">Send to WhatsApp</button>
+          <button class="btn-ghost" onclick="window.open('${mailtoURL}','_blank')">Send to Email</button>
+        </div>
+
+        <p style="margin-top:12px;color:rgba(170,182,199,0.9);">
+          WhatsApp: <b>7826065905</b><br>
+          Email: <b>rexexpertdesign@gmail.com</b>
+        </p>
+      `;
+
+      form.reset();
+      scrollToSection("resultBox");
+    });
+  </script>
+
+</body>
+</html>
